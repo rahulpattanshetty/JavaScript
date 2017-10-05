@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Enter the DOB
+	</title>
+</head>
+<body>
+<label>Enter the date</label>
+<input type="date" id="dob"/>
+<h3 id="msg"></h3>
+	<script>
+		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sat"];
+
+		var dobHandle = document.getElementById('dob');
+		var msgHandle = document.getElementById('msg');
+
+		dobHandle.addEventListener('change',function(){
+			var dateInput = dobHandle.value.split("-");
+			var userDate = new Date(dateInput[0],dateInput[1] - 1,dateInput[2]);
+			msgHandle.innerHTML = "You were born on a "+ days[userDate.getDay()];//getDay() returns the number(0to6)
+		});
+
+		//dobHandle.onchange = function(){}
+
+			</script>
+</body>
+</html>

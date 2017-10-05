@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>countDown</title>
+</head>
+<body>
+
+	
+	<input type="date" id="date"/><br>
+	<button id="run">Start CountDown</button><br>
+	<h1 id="tictoc">00:00:00:00</h1>
+	
+
+<script>
+	var ticHandle = document.getElementById('tictoc');
+	var seconds = 60;
+	var runHandle = document.getElementById('run');
+	var dateHandle = document.getElementById('date');
+	var counter;
+
+	function leadingZero(time)
+	{	
+		//return ("0"+time).slice(-2)
+		if (time <=9) {
+			time = "0"+time;
+		}
+		return time
+	}
+
+		var currentDate = new Date();
+		
+		
+		var day;
+	dateHandle.addEventListener('change',function(){
+			day = dateHandle.value.split("-");
+			var targetDate = new Date(day[0],day[1]-1,day[2]);
+			console.log(currentDate);
+			console.log(targetDate);
+			seconds=Math.floor((targetDate-currentDate)/1000);
+			
+	});
+
+
+	function runTimmer()
+	{
+		seconds--;
+		
+		//var remDay = day[2] - currentDate.getDate();
+		var hrs, mins,secs,days;
+		secs = seconds;
+		mins = Math.floor(secs/60);
+		secs = secs%60;
+		hrs = Math.floor(mins/60);
+		mins = mins%60;
+		days = Math.floor(hrs/24);
+		hrs = hrs%24;
+		
+		result =`${days}:${leadingZero(hrs)}:${leadingZero(mins)}:${leadingZero(secs)}`;
+		
+		ticHandle.innerHTML = result;
+	}
+
+	runHandle.addEventListener('click',function(){
+		
+	
+
+		setInterval(runTimmer,1000);
+			
+	});
+
+</script>	
+</body>
+
+</html>

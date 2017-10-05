@@ -48,6 +48,7 @@ function Rover(details) {
 		}else if (this.facing == "W") {
 			this.x -= 1;
 		}
+		return this.position();
 	};
 
 }
@@ -67,6 +68,7 @@ var zesu = new Rover({
 
 console.log(atom.position());
 //LMLMLMLMM
+/*
 atom.left();
 atom.move();
 atom.left();
@@ -91,3 +93,4 @@ zesu.right();
 zesu.right();
 zesu.move();
 console.log(zesu.position());
+*/

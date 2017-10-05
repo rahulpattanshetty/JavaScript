@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date Range</title>
+</head>
+<body>
+<label>Start Date:</label>
+<input type="date" id="sd"/><br>
+<label>End Date:</label>
+<input type="date" id="ed">
+<h3 id="msg"></h3>
+<ul id="dates">
+	
+</ul>
+<script>
+	var startHandle = document.getElementById('sd');
+	var endHandle = document.getElementById('ed')
+	var dates = [];
+	var msgHandle = document.getElementById('dates')
+	var startDate;
+	var endDate;
+
+	function populateRange(startDate,endDate)
+	{
+		while(startDate <= endDate)
+		{
+			dates.push(new Date(startDate));
+			startDate.setDate(startDate.getDate()+1);
+		}
+	}
+
+
+
+	endHandle.addEventListener('change',function(){
+		var startInput = startHandle.value.split("-");
+		var endInput = endHandle.value.split("-");
+		startDate = new Date(startInput[0],startInput[1] - 1,startInput[2]);
+		endDate = new Date(endInput[0],endInput[1]-1,endInput[2]);
+		populateRange(startDate,endDate);
+		console.log(dates);
+		dates.forEach(function(n){
+		
+			 msgHandle.innerHTML = document.write("<li>"+n+"</li>") ;
+
+			 
+		
+		})
+		
+	});
+
+</script>
+
+</body>
+</html>

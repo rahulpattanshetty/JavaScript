@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date object</title>
+</head>
+<body>
+	
+	<script>
+	var days = { 0:"Sunday", 1:"monday", 2:"tuesday", 3:"wednesday"};
+
+	var months = {8: "sept", 9:"oct", 10:"nov",11:"dec"}
+
+	vaar today = new Date();
+	console.log("today date is "+today.getDate());
+	console.log("today is "+days[today.getDay()]);
+	console.log("Year is "+today.getFullyYear());
+	console.log("Month is "+months[today.getMonth()]);
+	</script>
+</body>
+</html>

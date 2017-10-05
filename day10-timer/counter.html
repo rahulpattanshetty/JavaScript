@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1 id="tictoc">00:00:00</h1>
+	<button id="run">Start</button>
+	<button id="reset">Reset</button>
+
+<script>
+	var ticHandle = document.getElementById('tictoc');
+	var seconds = 0;
+
+	var runHandle = document.getElementById('run');
+	var resetHandle = document.getElementById('reset');
+	var counter;
+	var isRunning = false;
+
+	function leadingZero(time)
+	{	
+		//return ("0"+time).slice(-2)
+		if (time <=9) {
+			time = "0"+time;
+		}
+		return time
+	}
+ 
+	function runTimmer()
+	{
+		seconds++;
+		var hrs, mins,secs;
+		hrs = Math.floor(seconds / 3600);
+		mins = Math.floor((seconds - hrs * 3600)/60);
+		secs = Math.floor(seconds -(hrs * 3600 + mins * 60));
+		
+		result =`${leadingZero(hrs)}:${leadingZero(mins)}:${leadingZero(secs)}`;
+		
+		ticHandle.innerHTML = result;
+	}
+
+	runHandle.addEventListener('click',function(){
+		if (!isRunning) {
+			counter = setInterval(runTimmer,1000);
+			isRunning = true;
+			runHandle.innerHTML = "Stop";
+		}else {
+			clearInterval(counter);
+			isRunning = false;
+			runHandle.innerHTML = "Start";
+		}
+	});
+
+	resetHandle.addEventListener('click',function(){
+		seconds = 0;
+	});
+
+</script>
+</body>
+</html>
